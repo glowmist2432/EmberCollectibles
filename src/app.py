@@ -163,15 +163,15 @@ all_collectibles = [
         "name": "Stirling to St Andrews",
         "image": "images/first_bus_award.png",
         "description": "Ride a bus on the Stirling to St. Andrews route.",
-        "journey" : "stirling_st-andrews" 
+        "journey" : "e99" 
     }, 
 
     {
-        "id": "dundee_edinburgh",
-        "name": "Dundee to Edinburgh",
+        "id": "aberdeen_dundee",
+        "name": "Aberdeen to Dundee",
         "image": "images/first_bus_award.png",
         "description": "Ride a bus on the Dundee to Edinburgh route" ,
-        "journey" : "dundee_edinburgh"
+        "journey" : "e11"
     }, 
 
     {
@@ -179,7 +179,7 @@ all_collectibles = [
         "name": "Glasgow to Fort William",
         "image": "images/first_bus_award.png",
         "description": "Ride a bus on the Glasgow to Fort William route",
-        "journey" : "glasgow_fort-william" 
+        "journey" : "e5" 
     }
 
 
@@ -193,18 +193,107 @@ completed_journeys = []
 
 
 journeys = [
+
     {
-        "id": "stirling_st-andrews",
-        "name": "Stirling to St Andrews"
+        "id": "e1",
+        "name" : "Aberdeen and Edinburgh"
     },
+
     {
-        "id": "dundee_edinburgh",
-        "name": "Dundee to Edinburgh"
+        "id": "e3",
+        "name" : "Dundee and Glasgow"
     },
+
     {
-        "id": "glasgow_fort-william",
-        "name": "Glasgow to Fort William"
+        "id": "e4",
+        "name" : "Edinburgh and Fort William"
+    },
+
+    {
+        "id" : "e4x",
+        "name" : "Edinburgh and Fort William"
+    },
+
+    {
+        "id" : "e5",
+        "name" : "Fort William and Glasgow"
+    },
+
+    {
+        "id" : "e6",
+        "name" : "Inverness and Thurso"
+    },
+
+    {
+        "id" : "e7",
+        "name" : "Aberdeen and Inverness"
+    },
+
+    {
+        "id" : "e8",
+        "name" : "Glasgow and Inverness"
+    },
+
+    {
+        "id" : "e9",
+        "name" : "Edinburgh and Inverness"
+    },
+
+    {
+        "id" : "e10",
+        "name" : "Dundee and Dundee"
+    },
+
+    {
+        "id" : "e11",
+        "name" : "Aberdeen and Dundee"
+    },
+
+    {
+        "id" : "e12",
+        "name" : "Carmyle and Glasgow"
+    },
+
+    {
+        "id" : "e14",
+        "name" : "Inverness and Oban"
+    },
+
+    {
+        "id" : "e15",
+        "name" : "Edinburgh and Oban"
+    },
+
+    {
+        "id" : "e16",
+        "name" : "Glasgow and Oban"
+    },
+
+    {
+        "id" : "e17",
+        "name" : "Aberdeen and Perth"
+    },
+
+    {
+        "id" : "e18",
+        "name" : "Inverness and Ullapool"
+    },
+
+    {
+        "id" : "e19",
+        "name" : "Edinburgh Airport and Livingston"
+    },
+
+    {
+        "id" : "e20",
+        "name" : "Edinburgh Airport and Glasgow"
+    },
+
+    {
+        "id" : "e99",
+        "name" : "Stirling and St Andrews"
     }
+
 ]
 
 
