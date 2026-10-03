@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ember Collectibles</title>
+
+    <style>
+
+        header {
+            background-color: #73B7A6;
+            color: #FCFBF4;
+            text-align: center;
+            padding: 10px;
+        }
+
+        body {
+            background-color: #C1DBD2;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        ul.navBar {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #339378;
+            color: #FCFBF4;
+        }
+
+        ul.navBar li a {
+            display: block;
+            color: #FCFBF4;
+            text-decoration: none;
+            padding: 14px 20px;
+        }
+
+        ul.navBar li a:hover {
+            background-color: #73B7A6;
+        }
+
+
+        /* Main form */
+
+        .journey-container {
+            background-color: #FCFBF4;
+            width: 90%;
+            max-width: 500px;
+            margin: 60px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .journey-container h1 {
+            text-align: center;
+            color: #339378;
+        }
+
+        .journey-container p {
+            text-align: center;
+            color: #444;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #339378;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #73B7A6;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #339378;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #339378;
+            color: #FCFBF4;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #73B7A6;
+        }
+
+        #message {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .error {
+            color: #c0392b;
+        }
+
+        .success {
+            color: #339378;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+        <h2>Ember Collectibles</h2>
+    </header>
+
+
+    <!-- Navigation Bar -->
+
+    <nav>
+        <ul class="navBar">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+
+            <li>
+                <a href="collectibles.html">Your Collectibles</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- Journey Form -->
+
+    <main>
+
+        <div class="journey-container">
+
+            <h1>Vehicle Journey</h1>
+
+            <p>
+                Enter your registration plate and select your journey.
+            </p>
+
+
+            <form id="journeyForm">
+
+                <!-- Registration -->
+
+                <div class="form-group">
+
+                    <label for="registration">
+                        Registration Plate
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registration"
+                        name="registration"
+                        placeholder="e.g. AB12 CDE"
+                        maxlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Journey -->
+
+                <div class="form-group">
+
+                    <label for="journey">
+                        Select Journey
+                    </label>
+
+                    <select
+                        id="journey"
+                        name="journey"
+                        required
+                    >
+
+                        <option value="">
+                            -- Select a journey --
+                        </option>
+
+                        <option value="journey_1">
+                            Journey 1
+                        </option>
+
+                        <option value="journey_2">
+                            Journey 2
+                        </option>
+
+                        <option value="journey_3">
+                            Journey 3
+                        </option>
+
+                        <option value="journey_4">
+                            Journey 4
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Submit -->
+
+                <button type="submit" id="submitButton">
+                    Submit Journey
+                </button>
+
+            </form>
+
+
+            <div id="message"></div>
+
+        </div>
+
+    </main>
+
+
+    <!-- JavaScript -->
+
+    <script>
+
+        const form = document.getElementById("journeyForm");
+
+        const message = document.getElementById("message");
+
+        const submitButton =
+            document.getElementById("submitButton");
+
+
+        form.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+
+            const registration =
+                document.getElementById("registration").value.trim();
+
+            const journey =
+                document.getElementById("journey").value;
+
+
+            message.textContent = "";
+
+            submitButton.disabled = true;
+
+            submitButton.textContent = "Submitting...";
+
+
+            try {
+
+                const response = await fetch("/submit-journey", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        registration: registration,
+
+                        journey: journey
+
+                    })
+
+                });
+
+
+                const data = await response.json();
+
+
+                if (response.ok) {
+
+                    message.textContent =
+                        data.message ||
+                        "Journey submitted successfully.";
+
+                    message.className = "success";
+
+                    form.reset();
+
+                } else {
+
+                    message.textContent =
+                        data.error ||
+                        "Something went wrong.";
+
+                    message.className = "error";
+
+                }
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    "Could not connect to the server.";
+
+                message.className = "error";
+
+
+            } finally {
+
+                submitButton.disabled = false;
+
+                submitButton.textContent =
+                    "Submit Journey";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+
+
+

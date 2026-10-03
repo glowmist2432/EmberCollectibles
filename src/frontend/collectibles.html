@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Collectibles</title>
+
+    <style>
+
+        /* Header */
+
+        header {
+            background-color: #73B7A6;
+            color: #FCFBF4;
+            text-align: center;
+            padding: 10px;
+        }
+
+
+        /* Body */
+
+        body {
+            background-color: #C1DBD2;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* Navigation Bar */
+
+        ul.navBar {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #339378;
+            color: #FCFBF4;
+        }
+
+        ul.navBar li a {
+            display: block;
+            color: #FCFBF4;
+            text-decoration: none;
+            padding: 14px 20px;
+        }
+
+        ul.navBar li a:hover {
+            background-color: #73B7A6;
+        }
+
+
+        /* Page title */
+
+        .page-title {
+            text-align: center;
+            color: #339378;
+            margin-top: 40px;
+            margin-bottom: 10px;
+        }
+
+
+        /* Award counter */
+
+        .award-counter {
+            text-align: center;
+            color: #FCFBF4;
+            background-color: #339378;
+
+            width: fit-content;
+            margin: 0 auto 40px auto;
+
+            padding: 15px 30px;
+
+            border-radius: 10px;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+
+        /* Awards grid */
+
+        .awards-container {
+
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 0 auto 50px auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+
+            gap: 25px;
+        }
+
+
+        /* Individual award */
+
+        .award {
+
+            background-color: #FCFBF4;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            box-shadow:
+                0 4px 10px rgba(0, 0, 0, 0.15);
+
+        }
+
+
+        /* Award image */
+
+        .award img {
+
+            width: 100%;
+            height: 180px;
+
+            object-fit: contain;
+
+            border-radius: 5px;
+        }
+
+
+        /* Award name */
+
+        .award h3 {
+
+            color: #339378;
+
+            margin-top: 12px;
+            margin-bottom: 5px;
+        }
+
+
+        /* Award description */
+
+        .award p {
+
+            color: #555;
+
+            margin: 0;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Header -->
+
+    <header>
+
+        <h2>Ember Collectibles</h2>
+
+    </header>
+
+
+    <!-- Navigation Bar -->
+
+    <nav>
+
+        <ul class="navBar">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="collectibles.html">Your Collectibles</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- Page Title -->
+
+    <h1 class="page-title">
+        Your Collectibles
+    </h1>
+
+
+    <!-- Award Counter -->
+
+    <div class="award-counter">
+
+        <span id="awardCount">4</span>/100 Awards Collected
+
+    </div>
+
+
+    <!-- Awards -->
+
+    <main>
+
+        <div class="awards-container">
+
+
+            <!-- Award 1 -->
+
+            <div class="award">
+
+                <img
+                    src="images/award1.png"
+                    alt="First Journey Award"
+                >
+
+                <h3>
+                    First Journey
+                </h3>
+
+                <p>
+                    Complete your first journey.
+                </p>
+
+            </div>
+
+
+            <!-- Award 2 -->
+
+            <div class="award">
+
+                <img
+                    src="images/award2.png"
+                    alt="Road Trip Award"
+                >
+
+                <h3>
+                    Road Trip
+                </h3>
+
+                <p>
+                    Complete 10 journeys.
+                </p>
+
+            </div>
+
+
+            <!-- Award 3 -->
+
+            <div class="award">
+
+                <img
+                    src="images/award3.png"
+                    alt="Explorer Award"
+                >
+
+                <h3>
+                    Explorer
+                </h3>
+
+                <p>
+                    Visit 5 different locations.
+                </p>
+
+            </div>
+
+
+            <!-- Award 4 -->
+
+            <div class="award">
+
+                <img
+                    src="images/award4.png"
+                    alt="100 Miles Award"
+                >
+
+                <h3>
+                    100 Miles
+                </h3>
+
+                <p>
+                    Travel 100 miles.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- Award Counter Script -->
+
+    <script>
+
+        /*
+            This number can eventually be supplied
+            by your Python backend.
+
+            For now it is calculated from the
+            number of award elements on the page.
+        */
+
+        const awards =
+            document.querySelectorAll(".award");
+
+        const totalAwards = 100;
+
+        const collectedAwards = awards.length;
+
+
+        document.getElementById("awardCount")
+            .textContent = collectedAwards;
+
+    </script>
+
+
+</body>
+
+</html>
+
