@@ -141,16 +141,16 @@
     <nav>
         <ul class="navBar">
             <li>
-                <a href="index.html">Home</a>
+                <a href="/index">Home</a>
             </li>
 
 
             <li>
-                <a href="collectibles.html">Your Collectibles</a>
+                <a href="/collectibles">Your Collectibles</a>
             </li>
 
             <li>
-                <a href="registrations.html">Registration Plates</a>
+                <a href="/registrations">Registration Plates</a>
             </li>
         </ul>
     </nav>
@@ -195,35 +195,19 @@
 
                 <div class="form-group">
 
-                    <label for="journey">
-                        Select Journey
-                    </label>
+                    <label for="journey">Select a Journey:</label>
 
-                    <select
-                        id="journey"
-                        name="journey"
-                        required
-                    >
+                    <select id="journey" name="journey" required>
 
-                        <option value="">
-                            -- Select a journey --
-                        </option>
+                        <option value="">-- Select a journey --</option>
 
-                        <option value="journey_1">
-                            Journey 1
-                        </option>
+                        {% for journey in journeys %}
 
-                        <option value="journey_2">
-                            Journey 2
-                        </option>
+                            <option value="{{ journey.id }}">
+                                {{ journey.name }}
+                            </option>
 
-                        <option value="journey_3">
-                            Journey 3
-                        </option>
-
-                        <option value="journey_4">
-                            Journey 4
-                        </option>
+                        {% endfor %}
 
                     </select>
 
@@ -279,47 +263,33 @@
 
             try {
 
-                const response = await fetch("/submit-journey", {
-
+                fetch("/submit-journey", {
                     method: "POST",
-
                     headers: {
                         "Content-Type": "application/json"
                     },
-
                     body: JSON.stringify({
-
                         registration: registration,
-
                         journey: journey
-
                     })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        message.textContent = data.error;
+                        message.style.color = "red";
+                    } else {
+                        message.textContent = data.message;
+                        message.style.color = "green";
 
+                        // Go to registrations page
+                        window.location.href = "/registrations";
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    message.textContent = "Something went wrong.";
                 });
-
-
-                const data = await response.json();
-
-
-                if (response.ok) {
-
-                    message.textContent =
-                        data.message ||
-                        "Journey submitted successfully.";
-
-                    message.className = "success";
-
-                    form.reset();
-
-                } else {
-
-                    message.textContent =
-                        data.error ||
-                        "Something went wrong.";
-
-                    message.className = "error";
-
-                }
 
 
             } catch (error) {

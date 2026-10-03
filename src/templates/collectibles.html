@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Collectibles - Ember Collectibles</title>
+
+    <style>
+        header {
+            background-color: #73B7A6;
+            color: #FCFBF4;
+            text-align: center;
+            padding: 10px;
+        }
+
+        body {
+            background-color: #C1DBD2;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        ul.navBar {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #339378;
+        }
+
+        ul.navBar li a {
+            display: block;
+            color: #FCFBF4;
+            text-decoration: none;
+            padding: 14px 20px;
+        }
+
+        ul.navBar li a:hover {
+            background-color: #73B7A6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #339378;
+        }
+
+        .collectible-counter {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #339378;
+        }
+
+        #collectibleList {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .collectible {
+            background-color: #FCFBF4;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #73B7A6;
+        }
+
+        .collectible.collected {
+            border-color: #339378;
+        }
+
+        .collectible.uncollected {
+            opacity: 0.5;
+        }
+
+        .collectible img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+        }
+
+        .collectible-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .collectible-description {
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .collected-label {
+            color: #339378;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .uncollected-label {
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>Ember Collectibles</h2>
+    </header>
+
+    <ul class="navBar">
+        <li>
+            <a href="/">Home</a>
+        </li>
+
+        <li>
+            <a href="/collectibles">Collectibles</a>
+        </li>
+
+        <li>
+            <a href="/registrations">Registration Plates</a>
+        </li>
+    </ul>
+
+
+    <div class="container">
+
+        <h1>Collectibles</h1>
+
+        <div class="collectible-counter">
+
+            {{ collected|length }}/{{ collectibles|length }}
+
+            Collectibles Collected
+
+        </div>
+
+
+        <div id="collectibleList">
+
+            {% for collectible in collectibles %}
+
+                {% if collectible.id in collected %}
+
+                    <!-- COLLECTED -->
+                    <div class="collectible collected">
+
+                        <img
+                            src="{{ url_for('static', filename=collectible.image) }}"
+                            alt="{{ collectible.name }}"
+                        >
+
+                        <div class="collectible-name">
+                            {{ collectible.name }}
+                        </div>
+
+                        <div class="collectible-description">
+                            {{ collectible.description }}
+                        </div>
+
+                        <div class="collected-label">
+                            ✓ Collected
+                        </div>
+
+                    </div>
+
+                {% else %}
+
+                    <!-- NOT COLLECTED -->
+                    <div class="collectible uncollected">
+
+                        <img
+                            src="{{ url_for('static', filename=collectible.image) }}"
+                            alt="{{ collectible.name }}"
+                        >
+
+                        <div class="collectible-name">
+                            {{ collectible.name }}
+                        </div>
+
+                        <div class="collectible-description">
+                            {{ collectible.description }}
+                        </div>
+
+                        <div class="uncollected-label">
+                            Not collected
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>
