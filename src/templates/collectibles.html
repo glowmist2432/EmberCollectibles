@@ -61,8 +61,8 @@
 
         #collectibleList {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
 
         .collectible {
@@ -82,8 +82,8 @@
         }
 
         .collectible img {
-            width: 150px;
-            height: 150px;
+            width: 300px;
+            height: 300px;
             object-fit: contain;
         }
 
@@ -108,6 +108,8 @@
             color: #666;
             margin-top: 10px;
         }
+
+
     </style>
 </head>
 
@@ -115,6 +117,7 @@
 
     <header>
         <h2>Ember Collectibles</h2>
+        <h3>"Gotta ride them all!"</h3>
     </header>
 
     <ul class="navBar">
@@ -179,7 +182,7 @@
                     <div class="collectible uncollected">
 
                         <img
-                            src="{{ url_for('static', filename=collectible.image) }}"
+                            src="{{ url_for('static', filename='images/default.png') }}"
                             alt="{{ collectible.name }}"
                         >
 

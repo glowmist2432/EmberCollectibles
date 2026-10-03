@@ -140,28 +140,28 @@ all_collectibles = [
     {
         "id": "5_reg",
         "name": "Five Buses",
-        "image": "images/five_bus_award.png",
+        "image": "images/firebus.png",
         "description": "Ride five different buses." 
     },
 
     {
         "id": "25_reg",
-        "name": "Five Buses",
-        "image": "images/five_bus_award.png",
-        "description": "Ride five different buses." 
+        "name": "Twenty Five Buses",
+        "image": "images/silver_bus.png",
+        "description": "Ride twenty five different buses." 
     },
 
     {
         "id": "50_reg",
         "name": "Fifty Buses",
-        "image": "images/five_bus_award.png",
-        "description": "Ride five different buses." 
+        "image": "images/gold_bus.png",
+        "description": "Ride fifty different buses." 
     },
 
     {
         "id": "stirling_st-andrews",
         "name": "Stirling to St Andrews",
-        "image": "images/first_bus_award.png",
+        "image": "images/str_sta_journey.png",
         "description": "Ride a bus on the Stirling to St. Andrews route.",
         "journey" : "e99" 
     }, 
@@ -169,7 +169,7 @@ all_collectibles = [
     {
         "id": "aberdeen_dundee",
         "name": "Aberdeen to Dundee",
-        "image": "images/first_bus_award.png",
+        "image": "images/abn_dnd_journey.png",
         "description": "Ride a bus on the Dundee to Edinburgh route" ,
         "journey" : "e11"
     }, 
@@ -177,10 +177,19 @@ all_collectibles = [
     {
         "id": "glasgow_fort-william",
         "name": "Glasgow to Fort William",
-        "image": "images/first_bus_award.png",
+        "image": "images/gla_fw_journey.png",
         "description": "Ride a bus on the Glasgow to Fort William route",
         "journey" : "e5" 
+    },
+
+    {
+        "id": "oban_edinburgh",
+        "name": "Oban to Edinburgh",
+        "image": "images/oban_edi_journey.png",
+        "description": "Ride a bus on the Oban to Edinburgh route",
+        "journey" : "e15" 
     }
+
 
 
 ]
