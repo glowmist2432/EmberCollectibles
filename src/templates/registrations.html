@@ -106,32 +106,98 @@
         .uncollected-label {
             color: #666;
             font-size: 14px;
+
+        }
+
+                /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navbar {
+            background-color: #212121;
+            min-height: 70px;
+            padding: 0 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .logo {
+            color: #FCFBF4;
+            text-decoration: none;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            font-size: 26px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-link {
+            color: #FCFBF4;
+            text-decoration: none;
+
+            padding: 11px 16px;
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            transition: 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: #73B7A6;
+        }
+
+        .nav-link.active {
+            background-color: #73B7A6;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <h2>Ember Collectibles</h2>
-        <h3>"Gotta ride them all!"</h3>
-    </header>
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
-    <!-- Navigation -->
-    <ul class="navBar">
-        <li>
-            <a href="/">Home</a>
-        </li>
+    <nav class="navbar">
 
-        <li>
-            <a href="/collectibles">Collectibles</a>
-        </li>
+        <a href="/" class="logo">
+            <img class="logo-icon" src="{{ url_for('static', filename='images/emberLogo.png') }}" width="50"></img>
+            Ember Collectibles
+        </a>
 
-        <li>
-            <a href="/registrations">Registration Plates</a>
-        </li>
-    </ul>
+        <div class="nav-links">
+
+            <a href="/" class="nav-link">
+                Home
+            </a>
+
+            <a href="/registrations" class="nav-link">
+                Registrations
+            </a>
+
+            <a href="/collectibles" class="nav-link">
+                Collectibles
+            </a>
+
+        </div>
+
+    </nav>
 
 
     <div class="container">

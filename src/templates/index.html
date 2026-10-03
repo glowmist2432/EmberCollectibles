@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,117 +9,462 @@
 
     <style>
 
-        header {
-            background-color: #73B7A6;
-            color: #FCFBF4;
-            text-align: center;
-            padding: 10px;
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            background-color: #C1DBD2;
             margin: 0;
+            background-color: #C1DBD2;
+            color: #263d37;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        ul.navBar {
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navbar {
+            background-color: #212121;
+            min-height: 70px;
+            padding: 0 40px;
+
             display: flex;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            background-color: #339378;
-            color: #FCFBF4;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
         }
 
-        ul.navBar li a {
-            display: block;
+        .logo {
             color: #FCFBF4;
             text-decoration: none;
-            padding: 14px 20px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 23px;
+            font-weight: bold;
         }
 
-        ul.navBar li a:hover {
+        .logo-icon {
+            font-size: 26px;
+            width: 20;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-link {
+            color: #FCFBF4;
+            text-decoration: none;
+
+            padding: 11px 16px;
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            transition: 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: #73B7A6;
+        }
+
+        .nav-link.active {
             background-color: #73B7A6;
         }
 
 
-        /* Main form */
+        /* =========================
+           HERO
+        ========================= */
 
-        .journey-container {
+        .hero {
+            max-width: 1150px;
+            margin: 45px auto 30px;
+
+            padding: 65px 40px;
+
+            border-radius: 22px;
+
+            background-color: #73B7A6;
+            color: #FCFBF4;
+
+            text-align: center;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .hero-icon {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            margin: 0;
+
+            font-size: 48px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            max-width: 650px;
+
+            margin: 20px auto 0;
+
+            font-size: 18px;
+            line-height: 1.6;
+
+            opacity: 0.95;
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px 50px;
+        }
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
             background-color: #FCFBF4;
-            width: 90%;
-            max-width: 500px;
-            margin: 60px auto;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+            transition: 0.2s ease;
         }
 
-        .journey-container h1 {
-            text-align: center;
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            display: block;
+
             color: #339378;
+
+            font-size: 36px;
+            font-weight: bold;
         }
 
-        .journey-container p {
-            text-align: center;
-            color: #444;
+        .stat-label {
+            display: block;
+
+            margin-top: 5px;
+
+            color: #61736e;
+
+            font-size: 14px;
         }
+
+
+        /* =========================
+           JOURNEY CARD
+        ========================= */
+
+        .journey-card {
+            max-width: 700px;
+
+            margin: 0 auto 30px;
+
+            padding: 35px;
+
+            background-color: #FCFBF4;
+
+            border-radius: 18px;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .journey-card-header {
+            text-align: center;
+
+            margin-bottom: 25px;
+        }
+
+        .journey-card-header h2 {
+            margin: 0;
+
+            color: #339378;
+
+            font-size: 28px;
+        }
+
+        .journey-card-header p {
+            margin: 8px 0 0;
+
+            color: #61736e;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
 
         .form-group {
             margin-bottom: 20px;
         }
 
-        label {
+        .form-group label {
             display: block;
+
             margin-bottom: 8px;
+
+            color: #263d37;
+
             font-weight: bold;
-            color: #339378;
         }
 
-        input,
-        select {
+        .form-group input,
+        .form-group select {
             width: 100%;
-            padding: 12px;
-            border: 2px solid #73B7A6;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
+
+            padding: 15px;
+
+            border: 2px solid #C1DBD2;
+
+            border-radius: 9px;
+
             background-color: white;
-        }
 
-        input:focus,
-        select:focus {
-            outline: none;
-            border-color: #339378;
-        }
+            color: #263d37;
 
-        button {
-            width: 100%;
-            padding: 14px;
-            background-color: #339378;
-            color: #FCFBF4;
-            border: none;
-            border-radius: 5px;
             font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
+
+            transition: 0.2s ease;
         }
 
-        button:hover {
-            background-color: #73B7A6;
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+
+            border-color: #339378;
+
+            box-shadow: 0 0 0 3px rgba(51, 147, 120, 0.12);
         }
+
+        .form-group input::placeholder {
+            color: #9aaba6;
+        }
+
+
+        /* =========================
+           SUBMIT BUTTON
+        ========================= */
+
+        .submit-button {
+            width: 100%;
+
+            margin-top: 5px;
+
+            padding: 16px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background-color: #339378;
+
+            color: #FCFBF4;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #287b64;
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 15px rgba(51, 147, 120, 0.25);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================= */
 
         #message {
-            margin-top: 20px;
             text-align: center;
+
+            margin: 18px 0 0;
+
+            min-height: 20px;
+
+            font-weight: bold;
         }
 
-        .error {
-            color: #c0392b;
-        }
 
-        .success {
+        /* =========================
+           QUICK LINKS
+        ========================= */
+
+        .section-title {
+            text-align: center;
+
+            margin: 40px 0 20px;
+
             color: #339378;
+
+            font-size: 24px;
+        }
+
+        .quick-links {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .quick-card {
+            display: block;
+
+            padding: 25px;
+
+            background-color: #FCFBF4;
+
+            border-radius: 15px;
+
+            color: #263d37;
+
+            text-decoration: none;
+
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+            transition: 0.2s ease;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow: 0 9px 22px rgba(0, 0, 0, 0.12);
+        }
+
+        .quick-icon {
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+        .quick-card h3 {
+            margin: 0 0 6px;
+
+            color: #339378;
+        }
+
+        .quick-card p {
+            margin: 0;
+
+            color: #61736e;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: 30px;
+
+            padding: 25px;
+
+            background-color: #339378;
+
+            color: #FCFBF4;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 12px 20px;
+
+                flex-direction: column;
+
+                gap: 12px;
+            }
+
+            .nav-links {
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                margin: 25px 15px;
+
+                padding: 45px 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-card {
+                padding: 25px 20px;
+            }
         }
 
     </style>
@@ -129,55 +473,134 @@
 
 <body>
 
-    <!-- Header -->
 
-    <header>
-        <h2>Ember Collectibles</h2>
-        <h3>"Gotta ride them all!"</h3>
-    </header>
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
 
+    <nav class="navbar">
 
-    <!-- Navigation Bar -->
+        <a href="/" class="logo">
+            <img class="logo-icon" src="{{ url_for('static', filename='images/emberLogo.png') }}" width="50"></img>
+            Ember Collectibles
+        </a>
 
-    <nav>
-        <ul class="navBar">
-            <li>
-                <a href="/index">Home</a>
-            </li>
+        <div class="nav-links">
 
+            <a href="/" class="nav-link">
+                Home
+            </a>
 
-            <li>
-                <a href="/collectibles">Collectibles</a>
-            </li>
+            <a href="/registrations" class="nav-link">
+                Registrations
+            </a>
 
-            <li>
-                <a href="/registrations">Registration Plates</a>
-            </li>
-        </ul>
+            <a href="/collectibles" class="nav-link">
+                Collectibles
+            </a>
+
+        </div>
+
     </nav>
 
 
-    <!-- Journey Form -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
-    <main>
+    <section class="hero">
 
-        <div class="journey-container">
 
-            <h1>Vehicle Journey</h1>
+        <h1>
+            Gotta Ride Them All
+        </h1>
 
-            <p>
-                Enter your registration plate and select your journey.
-            </p>
+        <p>
+            Record the vehicles you travel in, new journeys,
+            and build your Ember collection.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- =========================
+             COLLECTION STATS
+        ========================= -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <span class="stat-number">
+                    {{ collected_registrations|length }}
+                </span>
+
+                <span class="stat-label">
+                    Registrations Collected
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-number">
+                    {{ collected_collectibles|length }}
+                </span>
+
+                <span class="stat-label">
+                    Collectibles Unlocked
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-number">
+                    {{ completed_journeys|length }}
+                </span>
+
+                <span class="stat-label">
+                    Journeys Completed
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             JOURNEY FORM
+        ========================= -->
+
+        <section class="journey-card">
+
+            <div class="journey-card-header">
+
+                <h2>
+                    Record a Journey
+                </h2>
+
+                <p>
+                    Add a vehicle to your collection.
+                </p>
+
+            </div>
 
 
             <form id="journeyForm">
+
 
                 <!-- Registration -->
 
                 <div class="form-group">
 
                     <label for="registration">
-                        Registration Plate
+                        Registration
                     </label>
 
                     <input
@@ -185,7 +608,7 @@
                         id="registration"
                         name="registration"
                         placeholder="e.g. AB12 CDE"
-                        maxlength="8"
+                        autocomplete="off"
                         required
                     >
 
@@ -196,11 +619,20 @@
 
                 <div class="form-group">
 
-                    <label for="journey">Select a Journey:</label>
+                    <label for="journey">
+                        Select a Journey
+                    </label>
 
-                    <select id="journey" name="journey" required>
+                    <select
+                        id="journey"
+                        name="journey"
+                        required
+                    >
 
-                        <option value="">-- Select a journey --</option>
+                        <option value="">
+                            -- Select a journey --
+                        </option>
+
 
                         {% for journey in journeys %}
 
@@ -217,108 +649,180 @@
 
                 <!-- Submit -->
 
-                <button type="submit" id="submitButton">
-                    Submit Journey
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+                    Add to Collection →
                 </button>
+
+
+                <!-- Result message -->
+
+                <p id="message"></p>
 
             </form>
 
+        </section>
 
-            <div id="message"></div>
 
-        </div>
+        <!-- =========================
+             QUICK LINKS
+        ========================= -->
+
+        <h2 class="section-title">
+            Explore Your Collection
+        </h2>
+
+
+        <section class="quick-links">
+
+
+            <a
+                href="/registrations"
+                class="quick-card"
+            >
+
+
+
+                <h3>
+                    Registration Plates
+                </h3>
+
+                <p>
+                    View every registration you've discovered
+                    and see how many you still have left to collect.
+                </p>
+
+            </a>
+
+
+            <a
+                href="/collectibles"
+                class="quick-card"
+            >
+
+
+                <h3>
+                    Collectibles
+                </h3>
+
+                <p>
+                    Discover your unlocked collectibles and
+                    complete your collection.
+                </p>
+
+            </a>
+
+
+        </section>
+
 
     </main>
 
 
-    <!-- JavaScript -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        Ember Collectibles
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
     <script>
 
         const form = document.getElementById("journeyForm");
-
         const message = document.getElementById("message");
 
-        const submitButton =
-            document.getElementById("submitButton");
 
-
-        form.addEventListener("submit", async function(event) {
+        form.addEventListener("submit", function(event) {
 
             event.preventDefault();
 
 
             const registration =
-                document.getElementById("registration").value.trim();
+                document.getElementById("registration").value;
 
             const journey =
                 document.getElementById("journey").value;
 
 
-            message.textContent = "";
-
-            submitButton.disabled = true;
-
-            submitButton.textContent = "Submitting...";
+            message.textContent = "Adding journey...";
+            message.style.color = "#339378";
 
 
-            try {
+            fetch("/submit-journey", {
 
-                fetch("/submit-journey", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        registration: registration,
-                        journey: journey
-                    })
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    registration: registration,
+                    journey: journey
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        message.textContent = data.error;
-                        message.style.color = "red";
-                    } else {
-                        message.textContent = data.message;
-                        message.style.color = "green";
 
-                        // Go to registrations page
-                        window.location.href = "/registrations";
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                    message.textContent = "Something went wrong.";
-                });
+            })
+
+            .then(response => response.json())
+
+            .then(data => {
+
+                if (data.error) {
+
+                    message.textContent = data.error;
+                    message.style.color = "#c0392b";
+
+                } else {
+
+                    message.textContent = data.message;
+                    message.style.color = "#339378";
 
 
-            } catch (error) {
+                    /*
+                     * Refresh the homepage after a short delay.
+                     *
+                     * This allows Flask to update the collection
+                     * statistics and collectible data.
+                     */
+
+                    setTimeout(function() {
+
+                        window.location.href = "/collectibles";
+
+                    }, 800);
+
+                }
+
+            })
+
+            .catch(error => {
 
                 console.error(error);
 
                 message.textContent =
-                    "Could not connect to the server.";
+                    "Something went wrong. Please try again.";
 
-                message.className = "error";
+                message.style.color = "#c0392b";
 
-
-            } finally {
-
-                submitButton.disabled = false;
-
-                submitButton.textContent =
-                    "Submit Journey";
-
-            }
+            });
 
         });
 
     </script>
 
+
 </body>
 
 </html>
-
 
 

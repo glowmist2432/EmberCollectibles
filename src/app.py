@@ -348,7 +348,13 @@ def check_collectibles():
 
 @app.route("/")
 def home():
-    return render_template("index.html", journeys=journeys)
+    return render_template(
+        "index.html",
+        journeys=journeys,
+        collected_registrations=collected_registrations,
+        collected_collectibles=collected_collectibles,
+        completed_journeys=completed_journeys
+    )
 
 @app.route("/<page>")
 def get_page(page):
